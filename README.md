@@ -1,44 +1,44 @@
-# 🥖 F&B Process Anomaly Prediction - Industrial Bread Baking Solution
+# ☕ Coffee Bean Roasting Process Anomaly Prediction - Industrial Solution
 
 ## 📋 Project Overview
 
-This repository contains a **Food & Beverage (F&B) Process Anomaly Prediction System** specifically designed for **Industrial Bread Baking Operations**. The solution uses **Long Short-Term Memory (LSTM) Neural Networks** to predict quality anomalies from multi-sensor time series data, enabling proactive quality control and process optimization in commercial bakery environments.
+This repository contains a **Food & Beverage (F&B) Process Anomaly Prediction System** specifically designed for **Industrial Coffee Bean Roasting Operations**. The solution uses **Long Short-Term Memory (LSTM) Neural Networks** to predict quality anomalies from multi-sensor time series data, enabling proactive quality control and process optimization in commercial coffee roasting environments.
 
 ## 🎯 Problem Statement
 
-**Develop an industrial F&B process anomaly prediction system** for bread manufacturing that uses historical sensor data to predict quality metrics and detect process deviations before they result in defective products. The system processes multi-variable time series data from various sensors (temperature, humidity) across different baking zones to forecast quality scores and identify potential quality issues.
+**Develop an industrial F&B process anomaly prediction system** for coffee bean roasting that uses historical sensor data to predict quality metrics and detect process deviations before they result in defective products. The system processes multi-variable time series data from various sensors (temperature, humidity) across different roasting zones to forecast quality scores and identify potential quality issues.
 
-## 🏭 F&B Domain: Industrial Bread Baking
+## 🏭 F&B Domain: Industrial Coffee Bean Roasting
 
 ### **Process Overview**
-- **Product**: Commercial bread production (large-scale bakery)
-- **Scale**: Industrial manufacturing facility (10,000-100,000 loaves/day)
-- **Process Type**: Continuous batch production with multiple zones
-- **Quality Focus**: Bread quality consistency, shelf-life, and consumer satisfaction
+- **Product**: Commercial coffee bean roasting (specialty coffee production)
+- **Scale**: Industrial roasting facility (1,000-10,000 kg/day)
+- **Process Type**: Batch roasting with multiple temperature zones
+- **Quality Focus**: Coffee bean quality, flavor development, and consistency
 
 ### **Manufacturing Process Steps**
-1. **Raw Material Preparation**: Flour, water, yeast, salt, additives
-2. **Mixing Zone**: Dough preparation and gluten development
-3. **Fermentation**: Yeast activity and dough rising
-4. **Baking Zone 1 & 2**: Crust formation and internal structure
-5. **Cooling Zone**: Temperature stabilization and moisture control
-6. **Packaging**: Final quality assessment and packaging
+1. **Green Bean Preparation**: Bean variety, moisture content, sizing
+2. **Drying Zone**: Moisture removal and initial heating (200-250°C)
+3. **Pre-Roasting**: Bean temperature rise and first crack (300-400°C)
+4. **Main Roasting**: Critical flavor development (400-600°C)
+5. **Post-Roasting**: Flavor stabilization (300-400°C)
+6. **Cooling Zone**: Rapid cooling to stop process (200-250°C)
 
 ## 📊 Data Structure & F&B Relevance
 
 ### **Input Data:**
 - **`data_X.csv`**: Multi-sensor time series data (2.1M rows, 18 columns)
-  - **15 Temperature Sensors**: Distributed across 5 process zones
+  - **15 Temperature Sensors**: Distributed across 5 roasting zones
   - **2 Humidity Sensors**: Relative and absolute humidity monitoring
   - **Time Index**: DateTime column for temporal alignment
 
 ### **Sensor Mapping to F&B Process:**
 ```
-T_data_1_1, T_data_1_2, T_data_1_3 → Mixing Zone Temperatures
-T_data_2_1, T_data_2_2, T_data_2_3 → Fermentation Chamber Temperatures  
-T_data_3_1, T_data_3_2, T_data_3_3 → Oven Zone 1 Temperatures (Baking)
-T_data_4_1, T_data_4_2, T_data_4_3 → Oven Zone 2 Temperatures (Baking)
-T_data_5_1, T_data_5_2, T_data_5_3 → Cooling Zone Temperatures
+T_data_1_1, T_data_1_2, T_data_1_3 → Drying Zone Temperatures (91-446°C)
+T_data_2_1, T_data_2_2, T_data_2_3 → Pre-Roasting Zone Temperatures (105-637°C)  
+T_data_3_1, T_data_3_2, T_data_3_3 → Main Roasting Zone Temperatures (45-1172°C)
+T_data_4_1, T_data_4_2, T_data_4_3 → Post-Roasting Zone Temperatures (17-666°C)
+T_data_5_1, T_data_5_2, T_data_5_3 → Cooling Zone Temperatures (114-465°C)
 H_data, AH_data → Humidity Monitoring (Relative & Absolute)
 ```
 
@@ -51,28 +51,29 @@ H_data, AH_data → Humidity Monitoring (Relative & Absolute)
 
 ### **Composite Quality Score Components:**
 
-#### **1. Physical Quality (40%)**
-- **Specific Volume**: Bread volume per unit weight (target: 4.5-5.5 cm³/g)
-- **Crumb Structure**: Cell uniformity and distribution
-- **Crust Quality**: Color, thickness, crispness
-- **Moisture Content**: Internal moisture (target: 35-40%)
+#### **1. Roast Quality (40%)**
+- **Roast Level**: Light, Medium, Medium-Dark, Dark (target: consistent level)
+- **Color Uniformity**: Even roast color across batch
+- **Bean Expansion**: Proper bean size increase (target: 15-20%)
+- **Surface Oil**: Appropriate oil development for roast level
 
-#### **2. Sensory Quality (30%)**
-- **Taste**: Flavor development and balance
-- **Texture**: Crumb softness and elasticity
-- **Aroma**: Fresh bread smell intensity
-- **Appearance**: Overall visual appeal
+#### **2. Flavor Quality (30%)**
+- **Acidity**: Bright, balanced acidity levels
+- **Body**: Full, rich mouthfeel
+- **Aroma**: Complex, appealing fragrance
+- **Taste Balance**: Harmony of flavors (sweet, bitter, sour)
 
 #### **3. Technical Quality (20%)**
-- **Internal Temperature**: Core temperature after baking (target: 95-98°C)
-- **Weight Consistency**: Batch-to-batch weight variation
-- **Shelf Life**: Mold resistance and staling rate
-- **Nutritional Value**: Protein, fiber content
+- **Moisture Content**: Final moisture (target: 1-3%)
+- **Bean Integrity**: Minimal breakage and defects
+- **Shelf Life**: Oxidation resistance and freshness retention
+- **Consistency**: Batch-to-batch uniformity
 
 #### **4. Process Efficiency (10%)**
-- **Energy Efficiency**: Oven temperature optimization
-- **Waste Reduction**: Minimizing defective products
+- **Energy Efficiency**: Optimal heat utilization
+- **Waste Reduction**: Minimizing defective beans
 - **Production Speed**: Throughput optimization
+- **Cost Control**: Efficient resource utilization
 
 ### **Quality Grade Interpretation:**
 ```
@@ -88,11 +89,11 @@ Quality Range    | Grade    | Description                    | Action Required
 ## 🧠 Technical Solution: LSTM Neural Networks
 
 ### **Algorithm Selection Justification:**
-1. **Sequential Data Processing**: Baking process is inherently time-series
+1. **Sequential Data Processing**: Roasting process is inherently time-series
 2. **Long-term Dependencies**: Quality depends on historical sensor patterns across zones
 3. **Multi-variable Handling**: Processes 17 sensor inputs simultaneously
 4. **Temporal Pattern Recognition**: Captures complex time-based quality relationships
-5. **F&B Process Specificity**: Handles baking cycle variations and process dynamics
+5. **F&B Process Specificity**: Handles roasting cycle variations and process dynamics
 
 ### **Model Architecture:**
 ```
@@ -104,7 +105,7 @@ Input: (24 timesteps, 17 features)
 ```
 
 ### **F&B-Specific Optimizations:**
-- **Time Steps**: 24-hour sequences for complete baking cycles
+- **Time Steps**: 24-hour sequences for complete roasting cycles
 - **Feature Engineering**: Zone-specific sensor aggregation
 - **Regularization**: Dropout layers to prevent overfitting
 - **Optimization**: Adam optimizer with learning rate scheduling
@@ -114,13 +115,13 @@ Input: (24 timesteps, 17 features)
 ### **1. F&B Data Loading & Alignment**
 - **Multi-file Integration**: Combines sensor data and quality measurements
 - **Temporal Alignment**: Merges features and targets by timestamp
-- **Process Validation**: Ensures baking cycle consistency
+- **Process Validation**: Ensures roasting cycle consistency
 
 ### **2. F&B Feature Engineering**
 - **Zone-based Aggregation**: Groups sensors by process zones
 - **Temperature Profiles**: Zone-specific temperature analysis
 - **Humidity Integration**: Moisture control monitoring
-- **Time Series Sequences**: 24-hour baking cycle windows
+- **Time Series Sequences**: 24-hour roasting cycle windows
 
 ### **3. F&B Model Training**
 - **Train/Test Split**: 80/20 split with temporal preservation
@@ -131,20 +132,20 @@ Input: (24 timesteps, 17 features)
 ## 🎯 Anomaly Detection Focus Areas
 
 ### **1. Temperature Anomalies**
-- **Mixing Zone**: Deviations from 24-28°C range affecting gluten development
-- **Fermentation**: Temperature fluctuations impacting yeast activity
-- **Oven Zones**: Uneven heating causing under/over-baking
-- **Cooling**: Rapid cooling causing condensation and quality issues
+- **Drying Zone**: Deviations from 200-250°C range affecting moisture removal
+- **Pre-Roasting**: Temperature fluctuations affecting first crack timing
+- **Main Roasting**: Uneven heating causing inconsistent flavor development
+- **Cooling**: Rapid cooling preventing proper flavor stabilization
 
 ### **2. Humidity Anomalies**
-- **Low Humidity**: Dough drying, poor fermentation, reduced volume
-- **High Humidity**: Excessive moisture, mold risk, poor crust formation
-- **Humidity Fluctuations**: Inconsistent product quality and texture
+- **Low Humidity**: Excessive bean drying, poor flavor development
+- **High Humidity**: Poor heat transfer, inconsistent roasting
+- **Humidity Fluctuations**: Inconsistent bean quality and flavor
 
 ### **3. Process Timing Anomalies**
-- **Mixing Time**: Over/under-mixing affecting gluten development
-- **Fermentation Time**: Insufficient rising or over-proofing
-- **Baking Time**: Under-baking or over-baking affecting texture
+- **Drying Time**: Over/under-drying affecting bean structure
+- **Roasting Time**: Insufficient or excessive flavor development
+- **Cooling Time**: Improper cooling affecting final quality
 
 ### **4. Quality Prediction Targets**
 - **Early Warning**: Detect quality issues 2-4 hours before they occur
@@ -184,10 +185,10 @@ F&B_PredictiveModel/
 ├── 📊 data_X.csv                              # Multi-sensor time series data
 ├── 🎯 data_Y.csv                              # Quality target values
 ├── 📋 sample_submission.csv                   # Submission format template
-├── 🥖 run_lstm_fb_domain_enhanced.py         # Enhanced F&B LSTM model
+├── ☕ run_lstm_fb_domain_enhanced.py          # Enhanced F&B LSTM model
 ├── 📊 fb_dashboard_visualization.py           # Real-time dashboard
 ├── 📖 F&B_Domain_Analysis.md                 # F&B domain analysis
-├── 📖 README_F&B_Enhanced.md                 # Enhanced documentation
+├── 📖 README.md                               # Enhanced documentation
 ├── 📈 fb_lstm_training_curves.png             # Training curves
 ├── 📊 fb_lstm_predictions.png                 # Prediction results
 ├── 📊 fb_real_time_dashboard.png              # Real-time dashboard
@@ -197,17 +198,17 @@ F&B_PredictiveModel/
 
 ## 🏭 Industrial Applications
 
-### **Commercial Bakery Operations**
-- **Scale**: 10,000-100,000 loaves per day
-- **Equipment**: Industrial mixers, proofers, tunnel ovens
-- **Automation**: PLC-controlled process parameters
+### **Commercial Coffee Roasting Operations**
+- **Scale**: 1,000-10,000 kg per day
+- **Equipment**: Industrial drum roasters, cooling systems
+- **Automation**: PLC-controlled temperature profiles
 - **Quality Control**: Real-time monitoring and adjustment
 
 ### **Economic Impact**
 - **Quality Losses**: 5-15% of production due to quality issues
 - **Energy Costs**: 20-30% of production costs
 - **Waste Reduction**: 10-20% improvement potential
-- **Shelf Life**: 2-3 days extension through optimal processing
+- **Shelf Life**: 6-12 months extension through optimal processing
 
 ### **Business Benefits**
 1. **Early Warning System**: Detect quality issues before they occur
@@ -226,10 +227,10 @@ F&B_PredictiveModel/
 - **Real-time Processing**: Efficient prediction pipeline
 
 ### **Industry Standards Compliance**
-- **AIB International**: Food Safety and Quality Standards
-- **Baking Industry Research Trust**: Process Control Guidelines
-- **American Society of Baking**: Technical Standards
-- **European Bakery Industry**: Quality Control Protocols
+- **Specialty Coffee Association (SCA)**: Roasting Standards and Protocols
+- **Coffee Quality Institute (CQI)**: Quality Assessment Guidelines
+- **International Coffee Organization (ICO)**: Industry Standards
+- **European Coffee Federation**: Quality Control Protocols
 - **Food Safety Modernization Act (FSMA)**: Preventive Controls
 
 ## 📊 Performance Metrics
@@ -258,17 +259,17 @@ F&B_PredictiveModel/
 - **Maintenance Scheduling**: Preventive maintenance planning
 
 ### **Process Flow Diagram**
-- **Manufacturing Steps**: Complete bread baking process
+- **Manufacturing Steps**: Complete coffee roasting process
 - **Sensor Locations**: Temperature and humidity sensor placement
 - **Quality Measurement Points**: Quality assessment locations
-- **Process Timeline**: Baking cycle duration and timing
+- **Process Timeline**: Roasting cycle duration and timing
 
 ## 🤝 Contributing
 
 This project demonstrates advanced F&B process anomaly prediction capabilities using:
 
 - **Technical Excellence**: Sophisticated LSTM implementation for F&B
-- **Domain Expertise**: Deep understanding of bread baking processes
+- **Domain Expertise**: Deep understanding of coffee roasting processes
 - **Data Engineering**: Complex multi-sensor data handling
 - **Time Series Analysis**: Advanced temporal pattern recognition
 - **Quality Prediction**: Industrial-grade forecasting system
@@ -289,7 +290,7 @@ This project is developed for educational and research purposes. All rights rese
 ## 🏆 Project Highlights
 
 ✅ **F&B Domain-Specific Solution**  
-✅ **Industrial Bread Baking Focus**  
+✅ **Industrial Coffee Roasting Focus**  
 ✅ **Advanced LSTM Implementation**  
 ✅ **Multi-sensor Process Monitoring**  
 ✅ **Real-time Quality Prediction**  
@@ -315,4 +316,4 @@ This project is developed for educational and research purposes. All rights rese
 
 ---
 
-*This solution represents a comprehensive approach to F&B process anomaly prediction using state-of-the-art deep learning techniques and industrial-grade data processing, specifically tailored for industrial bread baking operations.*
+*This solution represents a comprehensive approach to F&B process anomaly prediction using state-of-the-art deep learning techniques and industrial-grade data processing, specifically tailored for industrial coffee bean roasting operations.*

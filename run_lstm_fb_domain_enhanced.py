@@ -11,8 +11,8 @@ warnings.filterwarnings('ignore')
 
 # F&B Domain Configuration
 FB_CONFIG = {
-    'process': 'Industrial Bread Baking',
-    'product': 'Commercial Bread',
+    'process': 'Industrial Coffee Bean Roasting',
+    'product': 'Specialty Coffee Beans',
     'quality_range': {'min': 221, 'max': 505, 'mean': 402.8, 'std': 46.3},
     'quality_grades': {
         'A+': (450, 505, 'Excellent quality'),
@@ -22,19 +22,20 @@ FB_CONFIG = {
         'D': (221, 299, 'Poor quality (reject)')
     },
     'sensor_mapping': {
-        'mixing_zone': ['T_data_1_1', 'T_data_1_2', 'T_data_1_3'],
-        'fermentation': ['T_data_2_1', 'T_data_2_2', 'T_data_2_3'],
-        'oven_zone1': ['T_data_3_1', 'T_data_3_2', 'T_data_3_3'],
-        'oven_zone2': ['T_data_4_1', 'T_data_4_2', 'T_data_4_3'],
+        'drying_zone': ['T_data_1_1', 'T_data_1_2', 'T_data_1_3'],
+        'pre_roasting': ['T_data_2_1', 'T_data_2_2', 'T_data_2_3'],
+        'main_roasting': ['T_data_3_1', 'T_data_3_2', 'T_data_3_3'],
+        'post_roasting': ['T_data_4_1', 'T_data_4_2', 'T_data_4_3'],
         'cooling_zone': ['T_data_5_1', 'T_data_5_2', 'T_data_5_3'],
         'humidity': ['H_data', 'AH_data']
     },
     'process_parameters': {
-        'mixing_temp_range': (24, 28),  # °C
-        'fermentation_temp_range': (30, 35),  # °C
-        'baking_temp_range': (200, 230),  # °C
-        'cooling_temp_range': (20, 25),  # °C
-        'humidity_range': (60, 80)  # %
+        'drying_temp_range': (200, 250),  # °C
+        'pre_roasting_temp_range': (300, 400),  # °C
+        'main_roasting_temp_range': (400, 600),  # °C
+        'post_roasting_temp_range': (300, 400),  # °C
+        'cooling_temp_range': (200, 250),  # °C
+        'humidity_range': (40, 60)  # %
     }
 }
 
@@ -60,12 +61,14 @@ def analyze_sensor_anomalies(features, feature_columns):
         zone_data = df[sensors]
         zone_mean = zone_data.mean(axis=1)
         
-        if 'mixing' in zone:
-            temp_range = FB_CONFIG['process_parameters']['mixing_temp_range']
-        elif 'fermentation' in zone:
-            temp_range = FB_CONFIG['process_parameters']['fermentation_temp_range']
-        elif 'oven' in zone:
-            temp_range = FB_CONFIG['process_parameters']['baking_temp_range']
+        if 'drying' in zone:
+            temp_range = FB_CONFIG['process_parameters']['drying_temp_range']
+        elif 'pre_roasting' in zone:
+            temp_range = FB_CONFIG['process_parameters']['pre_roasting_temp_range']
+        elif 'main_roasting' in zone:
+            temp_range = FB_CONFIG['process_parameters']['main_roasting_temp_range']
+        elif 'post_roasting' in zone:
+            temp_range = FB_CONFIG['process_parameters']['post_roasting_temp_range']
         elif 'cooling' in zone:
             temp_range = FB_CONFIG['process_parameters']['cooling_temp_range']
         else:

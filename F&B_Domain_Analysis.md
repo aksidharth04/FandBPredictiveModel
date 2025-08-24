@@ -1,31 +1,32 @@
-# 🥖 F&B Process Anomaly Prediction - Domain Analysis
+# ☕ Coffee Bean Roasting Process Anomaly Prediction - Domain Analysis
 
-## 🎯 **Identified F&B Process: Industrial Bread Baking**
+## 🎯 **Identified F&B Process: Industrial Coffee Bean Roasting**
 
-Based on the sensor data analysis, this project models an **Industrial Bread Baking Process** with the following characteristics:
+Based on the sensor data analysis, this project models an **Industrial Coffee Bean Roasting Process** with the following characteristics:
 
 ### **Process Overview**
-- **Product**: Industrial-scale bread production (commercial bakery)
-- **Scale**: Large-scale manufacturing facility
-- **Process Type**: Continuous batch production
-- **Quality Focus**: Bread quality consistency and shelf-life
+- **Product**: Commercial coffee bean roasting (specialty coffee production)
+- **Scale**: Large-scale roasting facility (1,000-10,000 kg/day)
+- **Process Type**: Batch roasting with multiple temperature zones
+- **Quality Focus**: Coffee bean quality, flavor development, and consistency
 
-## 📊 **Sensor Data Analysis & F&B Relevance**
+## 📊 **Sensor Data Analysis & Coffee Roasting Relevance**
 
 ### **Temperature Sensors (15 sensors)**
 ```
-T_data_1_1, T_data_1_2, T_data_1_3 → Mixing Zone Temperatures
-T_data_2_1, T_data_2_2, T_data_2_3 → Fermentation Chamber Temperatures  
-T_data_3_1, T_data_3_2, T_data_3_3 → Oven Zone 1 Temperatures (Baking)
-T_data_4_1, T_data_4_2, T_data_4_3 → Oven Zone 2 Temperatures (Baking)
-T_data_5_1, T_data_5_2, T_data_5_3 → Cooling Zone Temperatures
+T_data_1_1, T_data_1_2, T_data_1_3 → Drying Zone Temperatures (91-446°C)
+T_data_2_1, T_data_2_2, T_data_2_3 → Pre-Roasting Zone Temperatures (105-637°C)  
+T_data_3_1, T_data_3_2, T_data_3_3 → Main Roasting Zone Temperatures (45-1172°C)
+T_data_4_1, T_data_4_2, T_data_4_3 → Post-Roasting Zone Temperatures (17-666°C)
+T_data_5_1, T_data_5_2, T_data_5_3 → Cooling Zone Temperatures (114-465°C)
 ```
 
-**F&B Relevance:**
-- **Mixing Zone**: Dough temperature affects gluten development and yeast activity
-- **Fermentation**: Critical for bread volume, texture, and flavor development
-- **Oven Zones**: Baking temperature profiles determine crust formation and internal structure
-- **Cooling Zone**: Prevents condensation and maintains product integrity
+**Coffee Roasting Relevance:**
+- **Drying Zone**: Removes moisture from green beans (200-250°C)
+- **Pre-Roasting**: Bean temperature rise and color change (300-400°C)
+- **Main Roasting**: Critical flavor development and chemical reactions (400-600°C)
+- **Post-Roasting**: Flavor stabilization and development (300-400°C)
+- **Cooling Zone**: Rapid cooling to stop roasting process (200-250°C)
 
 ### **Humidity Sensors (2 sensors)**
 ```
@@ -33,42 +34,47 @@ H_data   → Relative Humidity (%)
 AH_data  → Absolute Humidity (g/m³)
 ```
 
-**F&B Relevance:**
-- **Dough Consistency**: Humidity affects dough hydration and mixing efficiency
-- **Fermentation Control**: RH levels impact yeast activity and dough rising
-- **Baking Process**: Humidity affects crust formation and internal moisture
-- **Cooling & Storage**: Prevents moisture loss and maintains freshness
+**Coffee Roasting Relevance:**
+- **Bean Moisture**: Affects roasting time and flavor development
+- **Roasting Environment**: Humidity impacts heat transfer and bean expansion
+- **Cooling Process**: Prevents condensation and maintains bean quality
+- **Storage Conditions**: Maintains optimal moisture content for shelf life
 
-## 🏭 **Industrial Bread Baking Process Steps**
+## 🏭 **Industrial Coffee Roasting Process Steps**
 
-### **1. Raw Material Preparation**
-- **Flour**: Protein content, moisture levels, gluten strength
-- **Water**: Temperature, pH, hardness
-- **Yeast**: Activity, viability, temperature sensitivity
-- **Salt**: Concentration, distribution
-- **Additives**: Enzymes, preservatives, dough conditioners
+### **1. Green Bean Preparation**
+- **Bean Variety**: Arabica, Robusta, or blends
+- **Moisture Content**: 10-12% for optimal roasting
+- **Bean Size**: Uniform sizing for consistent roasting
+- **Quality Assessment**: Defect removal and grading
 
-### **2. Mixing Process**
-- **Equipment**: Industrial dough mixers
-- **Parameters**: Mixing speed, time, temperature
-- **Quality Indicators**: Dough consistency, gluten development
+### **2. Drying Phase**
+- **Equipment**: Drum roaster with temperature control
+- **Parameters**: 200-250°C, 3-5 minutes
+- **Quality Indicators**: Bean color change, moisture reduction
 - **Sensor Relevance**: T_data_1_1, T_data_1_2, T_data_1_3, H_data
 
-### **3. Fermentation**
-- **Equipment**: Fermentation chambers/proofers
-- **Parameters**: Temperature, humidity, time
-- **Quality Indicators**: Dough volume, gas production, flavor development
+### **3. Pre-Roasting Phase**
+- **Equipment**: Main roasting drum
+- **Parameters**: 300-400°C, 5-8 minutes
+- **Quality Indicators**: First crack, bean expansion, color development
 - **Sensor Relevance**: T_data_2_1, T_data_2_2, T_data_2_3, H_data, AH_data
 
-### **4. Baking Process**
-- **Equipment**: Tunnel ovens with multiple zones
-- **Parameters**: Temperature profiles, baking time, steam injection
-- **Quality Indicators**: Crust color, internal temperature, moisture content
-- **Sensor Relevance**: T_data_3_1, T_data_3_2, T_data_3_3, T_data_4_1, T_data_4_2, T_data_4_3
+### **4. Main Roasting Phase**
+- **Equipment**: High-temperature roasting drum
+- **Parameters**: 400-600°C, 8-12 minutes
+- **Quality Indicators**: Second crack, oil development, flavor compounds
+- **Sensor Relevance**: T_data_3_1, T_data_3_2, T_data_3_3
 
-### **5. Cooling & Packaging**
-- **Equipment**: Cooling tunnels, packaging lines
-- **Parameters**: Cooling rate, ambient conditions
+### **5. Post-Roasting Phase**
+- **Equipment**: Cooling and stabilization zone
+- **Parameters**: 300-400°C, 2-3 minutes
+- **Quality Indicators**: Flavor stabilization, color uniformity
+- **Sensor Relevance**: T_data_4_1, T_data_4_2, T_data_4_3
+
+### **6. Cooling & Packaging**
+- **Equipment**: Air cooling system, packaging lines
+- **Parameters**: 200-250°C, rapid cooling
 - **Quality Indicators**: Final moisture, shelf-life, appearance
 - **Sensor Relevance**: T_data_5_1, T_data_5_2, T_data_5_3, H_data, AH_data
 
@@ -78,28 +84,29 @@ AH_data  → Absolute Humidity (g/m³)
 
 Based on research and industry standards, the quality score represents a **composite quality index**:
 
-#### **1. Physical Quality (40%)**
-- **Specific Volume**: Bread volume per unit weight (target: 4.5-5.5 cm³/g)
-- **Crumb Structure**: Cell uniformity and distribution
-- **Crust Quality**: Color, thickness, crispness
-- **Moisture Content**: Internal moisture (target: 35-40%)
+#### **1. Roast Quality (40%)**
+- **Roast Level**: Light, Medium, Medium-Dark, Dark (target: consistent level)
+- **Color Uniformity**: Even roast color across batch
+- **Bean Expansion**: Proper bean size increase (target: 15-20%)
+- **Surface Oil**: Appropriate oil development for roast level
 
-#### **2. Sensory Quality (30%)**
-- **Taste**: Flavor development and balance
-- **Texture**: Crumb softness and elasticity
-- **Aroma**: Fresh bread smell intensity
-- **Appearance**: Overall visual appeal
+#### **2. Flavor Quality (30%)**
+- **Acidity**: Bright, balanced acidity levels
+- **Body**: Full, rich mouthfeel
+- **Aroma**: Complex, appealing fragrance
+- **Taste Balance**: Harmony of flavors (sweet, bitter, sour)
 
 #### **3. Technical Quality (20%)**
-- **Internal Temperature**: Core temperature after baking (target: 95-98°C)
-- **Weight Consistency**: Batch-to-batch weight variation
-- **Shelf Life**: Mold resistance and staling rate
-- **Nutritional Value**: Protein, fiber content
+- **Moisture Content**: Final moisture (target: 1-3%)
+- **Bean Integrity**: Minimal breakage and defects
+- **Shelf Life**: Oxidation resistance and freshness retention
+- **Consistency**: Batch-to-batch uniformity
 
 #### **4. Process Efficiency (10%)**
-- **Energy Efficiency**: Oven temperature optimization
-- **Waste Reduction**: Minimizing defective products
+- **Energy Efficiency**: Optimal heat utilization
+- **Waste Reduction**: Minimizing defective beans
 - **Production Speed**: Throughput optimization
+- **Cost Control**: Efficient resource utilization
 
 ### **Quality Score Interpretation**
 ```
@@ -114,35 +121,36 @@ Quality Range    | Grade    | Description
 
 ## 🔬 **Research-Based Quality Standards**
 
-### **Industry Standards (AIB International)**
-- **Internal Temperature**: 95-98°C for proper baking
-- **Moisture Content**: 35-40% for optimal shelf life
-- **Specific Volume**: 4.5-5.5 cm³/g for commercial bread
-- **pH Level**: 5.0-5.8 for optimal flavor
+### **Industry Standards (SCA - Specialty Coffee Association)**
+- **Roast Level**: Consistent color and development
+- **Moisture Content**: 1-3% for optimal shelf life
+- **Bean Expansion**: 15-20% volume increase
+- **Defect Rate**: <5% broken or defective beans
 
 ### **Process Control Parameters**
-- **Mixing Temperature**: 24-28°C for optimal gluten development
-- **Fermentation Temperature**: 30-35°C for yeast activity
-- **Baking Temperature**: 200-230°C for proper crust formation
-- **Relative Humidity**: 60-80% during fermentation
+- **Drying Temperature**: 200-250°C for moisture removal
+- **Pre-Roasting Temperature**: 300-400°C for first crack
+- **Main Roasting Temperature**: 400-600°C for flavor development
+- **Cooling Temperature**: 200-250°C for rapid cooling
+- **Relative Humidity**: 40-60% for optimal roasting environment
 
 ## 🎯 **Anomaly Detection Focus Areas**
 
 ### **1. Temperature Anomalies**
-- **Mixing Zone**: Deviations from 24-28°C range
-- **Fermentation**: Temperature fluctuations affecting yeast activity
-- **Oven Zones**: Uneven heating causing under/over-baking
-- **Cooling**: Rapid cooling causing condensation
+- **Drying Zone**: Deviations from 200-250°C range affecting moisture removal
+- **Pre-Roasting**: Temperature fluctuations affecting first crack timing
+- **Main Roasting**: Uneven heating causing inconsistent flavor development
+- **Cooling**: Rapid cooling preventing proper flavor stabilization
 
 ### **2. Humidity Anomalies**
-- **Low Humidity**: Dough drying, poor fermentation
-- **High Humidity**: Excessive moisture, mold risk
-- **Humidity Fluctuations**: Inconsistent product quality
+- **Low Humidity**: Excessive bean drying, poor flavor development
+- **High Humidity**: Poor heat transfer, inconsistent roasting
+- **Humidity Fluctuations**: Inconsistent bean quality and flavor
 
 ### **3. Process Timing Anomalies**
-- **Mixing Time**: Over/under-mixing affecting gluten development
-- **Fermentation Time**: Insufficient rising or over-proofing
-- **Baking Time**: Under-baking or over-baking
+- **Drying Time**: Over/under-drying affecting bean structure
+- **Roasting Time**: Insufficient or excessive flavor development
+- **Cooling Time**: Improper cooling affecting final quality
 
 ### **4. Quality Prediction Targets**
 - **Early Warning**: Detect quality issues 2-4 hours before they occur
@@ -152,24 +160,24 @@ Quality Range    | Grade    | Description
 
 ## 📚 **References & Industry Standards**
 
-1. **AIB International**: Food Safety and Quality Standards
-2. **Baking Industry Research Trust**: Process Control Guidelines
-3. **American Society of Baking**: Technical Standards
-4. **European Bakery Industry**: Quality Control Protocols
+1. **Specialty Coffee Association (SCA)**: Roasting Standards and Protocols
+2. **Coffee Quality Institute (CQI)**: Quality Assessment Guidelines
+3. **International Coffee Organization (ICO)**: Industry Standards
+4. **European Coffee Federation**: Quality Control Protocols
 5. **Food Safety Modernization Act (FSMA)**: Preventive Controls
 
 ## 🏭 **Industrial Application Context**
 
-### **Commercial Bakery Operations**
-- **Scale**: 10,000-100,000 loaves per day
-- **Equipment**: Industrial mixers, proofers, tunnel ovens
-- **Automation**: PLC-controlled process parameters
+### **Commercial Coffee Roasting Operations**
+- **Scale**: 1,000-10,000 kg per day
+- **Equipment**: Industrial drum roasters, cooling systems
+- **Automation**: PLC-controlled temperature profiles
 - **Quality Control**: Real-time monitoring and adjustment
 
 ### **Economic Impact**
 - **Quality Losses**: 5-15% of production due to quality issues
 - **Energy Costs**: 20-30% of production costs
 - **Waste Reduction**: 10-20% improvement potential
-- **Shelf Life**: 2-3 days extension through optimal processing
+- **Shelf Life**: 6-12 months extension through optimal processing
 
-This domain analysis provides the foundation for a comprehensive F&B process anomaly prediction system specifically tailored to industrial bread baking operations.
+This domain analysis provides the foundation for a comprehensive coffee roasting process anomaly prediction system specifically tailored to industrial coffee bean roasting operations.

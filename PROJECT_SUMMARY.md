@@ -1,8 +1,8 @@
-# 🥖 F&B Process Anomaly Prediction - Project Summary
+# ☕ Coffee Bean Roasting Process Anomaly Prediction - Project Summary
 
 ## 📋 **What Was Accomplished**
 
-This project successfully transformed a generic time-series prediction system into a **domain-specific Food & Beverage (F&B) Process Anomaly Prediction System** for industrial bread baking operations. All potential issues identified were systematically addressed and resolved.
+This project successfully transformed a generic time-series prediction system into a **domain-specific Food & Beverage (F&B) Process Anomaly Prediction System** for industrial coffee bean roasting operations. All potential issues identified were systematically addressed and resolved.
 
 ## 🎯 **Issues Identified & Resolved**
 
@@ -24,28 +24,27 @@ This project successfully transformed a generic time-series prediction system in
 - **Problem**: 17 sensor features may not all be relevant to F&B quality
 - **Solution**:
   - Mapped sensors to specific F&B process zones:
-    - **Mixing Zone**: T_data_1_1, T_data_1_2, T_data_1_3
-    - **Fermentation**: T_data_2_1, T_data_2_2, T_data_2_3
-    - **Oven Zone 1**: T_data_3_1, T_data_3_2, T_data_3_3
-    - **Oven Zone 2**: T_data_4_1, T_data_4_2, T_data_4_3
-    - **Cooling Zone**: T_data_5_1, T_data_5_2, T_data_5_3
-    - **Humidity**: H_data, AH_data
+    - **Drying Zone**: T_data_1_1, T_data_1_2, T_data_1_3 (91-446°C)
+    - **Pre-Roasting**: T_data_2_1, T_data_2_2, T_data_2_3 (105-637°C)
+    - **Main Roasting**: T_data_3_1, T_data_3_2, T_data_3_3 (45-1172°C)
+    - **Post-Roasting**: T_data_4_1, T_data_4_2, T_data_4_3 (17-666°C)
+    - **Cooling Zone**: T_data_5_1, T_data_5_2, T_data_5_3 (114-465°C)
 
 ### **4. ✅ Domain Specificity - RESOLVED**
 - **Problem**: Generic time-series approach, not F&B-specific
 - **Solution**:
-  - **Identified F&B Domain**: Industrial Bread Baking
+  - **Identified F&B Domain**: Industrial Coffee Bean Roasting
   - **Defined Quality Metrics**: Composite quality index with industry standards
-  - **Added Process Context**: Complete bread baking process understanding
+  - **Added Process Context**: Complete coffee roasting process understanding
   - **Implemented Anomaly Detection**: Zone-specific temperature and humidity monitoring
 
 ## 🏭 **F&B Domain Analysis Results**
 
-### **Chosen F&B Process: Industrial Bread Baking**
-- **Product**: Commercial bread production
-- **Scale**: Large-scale manufacturing (10,000-100,000 loaves/day)
-- **Process Type**: Continuous batch production with multiple zones
-- **Quality Focus**: Bread quality consistency and shelf-life
+### **Chosen F&B Process: Industrial Coffee Bean Roasting**
+- **Product**: Commercial coffee bean roasting (specialty coffee production)
+- **Scale**: Industrial roasting facility (1,000-10,000 kg/day)
+- **Process Type**: Batch roasting with multiple temperature zones
+- **Quality Focus**: Coffee bean quality, flavor development, and consistency
 
 ### **Quality Metrics Definition**
 ```
@@ -59,11 +58,12 @@ Quality Range    | Grade    | Description                    | Action Required
 ```
 
 ### **Process Parameters & Standards**
-- **Mixing Temperature**: 24-28°C (gluten development)
-- **Fermentation Temperature**: 30-35°C (yeast activity)
-- **Baking Temperature**: 200-230°C (crust formation)
-- **Cooling Temperature**: 20-25°C (moisture control)
-- **Humidity Range**: 60-80% (dough consistency)
+- **Drying Temperature**: 200-250°C (moisture removal)
+- **Pre-Roasting Temperature**: 300-400°C (first crack)
+- **Main Roasting Temperature**: 400-600°C (flavor development)
+- **Post-Roasting Temperature**: 300-400°C (flavor stabilization)
+- **Cooling Temperature**: 200-250°C (rapid cooling)
+- **Humidity Range**: 40-60% (optimal roasting environment)
 
 ## 🧠 **Technical Implementation**
 
@@ -102,7 +102,7 @@ Quality Range    | Grade    | Description                    | Action Required
 
 ### **Visualizations**
 - **Training Curves**: Model learning progress
-- **Process Flow**: Bread baking process diagram
+- **Process Flow**: Coffee roasting process diagram
 - **Dashboard**: Real-time monitoring interface
 - **Predictions**: Quality forecasting results
 
@@ -129,10 +129,10 @@ Quality Range    | Grade    | Description                    | Action Required
 - **Real-time Processing**: Efficient prediction pipeline
 
 ### **Industry Standards Compliance**
-- **AIB International**: Food Safety and Quality Standards
-- **Baking Industry Research Trust**: Process Control Guidelines
-- **American Society of Baking**: Technical Standards
-- **European Bakery Industry**: Quality Control Protocols
+- **Specialty Coffee Association (SCA)**: Roasting Standards and Protocols
+- **Coffee Quality Institute (CQI)**: Quality Assessment Guidelines
+- **International Coffee Organization (ICO)**: Industry Standards
+- **European Coffee Federation**: Quality Control Protocols
 - **Food Safety Modernization Act (FSMA)**: Preventive Controls
 
 ## ✅ **Verification Results**
@@ -147,7 +147,7 @@ Quality Range    | Grade    | Description                    | Action Required
 - **Temporal Alignment**: ✅ Properly aligned sensor and quality data
 - **Feature Relevance**: ✅ All 17 sensors mapped to F&B process zones
 - **Quality Metrics**: ✅ Industry-standard quality assessment
-- **Process Context**: ✅ Complete bread baking process understanding
+- **Process Context**: ✅ Complete coffee roasting process understanding
 
 ## 🚀 **Ready for Deployment**
 
@@ -161,10 +161,10 @@ The project is now **production-ready** with:
 
 ## 📚 **References & Standards**
 
-1. **AIB International**: Food Safety and Quality Standards
-2. **Baking Industry Research Trust**: Process Control Guidelines
-3. **American Society of Baking**: Technical Standards
-4. **European Bakery Industry**: Quality Control Protocols
+1. **Specialty Coffee Association (SCA)**: Roasting Standards and Protocols
+2. **Coffee Quality Institute (CQI)**: Quality Assessment Guidelines
+3. **International Coffee Organization (ICO)**: Industry Standards
+4. **European Coffee Federation**: Quality Control Protocols
 5. **Food Safety Modernization Act (FSMA)**: Preventive Controls
 
 ---
