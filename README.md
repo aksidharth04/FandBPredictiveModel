@@ -1,245 +1,213 @@
-# ☕ Industrial Coffee Bean Roasting Process Anomaly Prediction System
+# 🚀 Honeywell F&B Process Monitoring Dashboard
 
-## 🎯 **Project Overview**
+**Professional real-time monitoring dashboard for industrial coffee bean roasting processes**  
+_Built with React, Tailwind CSS, and modern web technologies_
 
-This project implements a **world-class F&B process anomaly prediction system** specifically designed for **Industrial Coffee Bean Roasting**. The system uses advanced LSTM neural networks to predict coffee quality from real-time sensor data, ensuring optimal roasting conditions and premium coffee production.
+## ✨ Features
 
-### 🏭 **Process: Industrial Coffee Bean Roasting**
-- **Product**: Specialty Coffee Beans
-- **Standards**: SCA (Specialty Coffee Association) Compliant
-- **Application**: Commercial coffee roasters, specialty coffee producers
-- **Capacity**: 100-500 kg per batch (typical commercial scale)
+* 🎯 **Real-time Monitoring**: Live quality score tracking and process efficiency metrics
+* 📊 **Interactive Dashboards**: Professional widgets with animated charts and gauges
+* 🔔 **Smart Alerts**: Real-time alert system with severity-based notifications
+* 🧠 **AI Integration**: Model training performance visualization
+* 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+* 🎨 **Modern UI**: Clean, professional interface with Honeywell branding
 
-## 📊 **Manufacturing Process & Sensor Mapping**
+## 🛠️ Tech Stack
 
-### **Coffee Roasting Process Zones:**
+**Frontend**: React 18, Vite, Tailwind CSS  
+**Charts**: Custom SVG-based visualizations  
+**Icons**: Lucide React  
+**Styling**: Tailwind CSS with custom Honeywell color palette
 
-1. **🌡️ Drying Zone** (T_data_1_1, T_data_1_2, T_data_1_3)
-   - **Optimal Range**: 150-220°C
-   - **Purpose**: Remove moisture from green beans
-   - **Duration**: 3-5 minutes
+## 🚀 Quick Start
 
-2. **🔥 Pre-Roasting Zone** (T_data_2_1, T_data_2_2, T_data_2_3)
-   - **Optimal Range**: 220-380°C
-   - **Purpose**: Bean expansion and color development
-   - **Duration**: 4-6 minutes
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-3. **⚡ Main Roasting Zone** (T_data_3_1, T_data_3_2, T_data_3_3)
-   - **Optimal Range**: 380-520°C
-   - **Purpose**: Critical flavor development and cracking
-   - **Duration**: 6-10 minutes
+### Installation
 
-4. **🌿 Post-Roasting Zone** (T_data_4_1, T_data_4_2, T_data_4_3)
-   - **Optimal Range**: 300-450°C
-   - **Purpose**: Flavor stabilization and development
-   - **Duration**: 2-4 minutes
-
-5. **❄️ Cooling Zone** (T_data_5_1, T_data_5_2, T_data_5_3)
-   - **Optimal Range**: 200-300°C
-   - **Purpose**: Rapid cooling to stop roasting process
-   - **Duration**: 2-3 minutes
-
-6. **💧 Humidity Control** (H_data, AH_data)
-   - **Optimal Range**: 40-60% RH
-   - **Purpose**: Maintain optimal roasting environment
-
-## 🎯 **Quality Metrics & SCA Standards**
-
-### **Quality Grade System:**
-- **A+ (450-505)**: Excellent quality - Premium specialty coffee
-- **A (400-449)**: Good quality - Commercial specialty coffee  
-- **B (350-399)**: Acceptable quality - Standard commercial coffee
-- **C (300-349)**: Below standard - Requires process adjustment
-- **D (221-299)**: Poor quality - Reject batch
-
-### **SCA Quality Assessment Criteria:**
-1. **Roast Level Consistency (40%)**: Agtron scale compliance
-2. **Bean Development (30%)**: Color uniformity, expansion, integrity
-3. **Flavor Profile (20%)**: Acidity, body, aroma, taste balance
-4. **Technical Quality (10%)**: Moisture content, defect rate, shelf life
-
-## 🧠 **Technical Solution: Enhanced LSTM Neural Network**
-
-### **Algorithm Justification:**
-- **LSTM Architecture**: Captures complex temporal patterns in roasting cycles
-- **Multi-variable Input**: Processes 17 sensor inputs simultaneously
-- **Sequence Learning**: 24-hour time windows for complete roasting cycles
-- **Industry Standards**: SCA-compliant temperature and quality ranges
-
-### **Model Architecture:**
-```
-Input Layer: (24, 17) - 24 time steps, 17 sensors
-LSTM Layer 1: 64 units with dropout (0.4) + L2 regularization
-LSTM Layer 2: 32 units with dropout (0.4) + L2 regularization  
-Dense Layer: 16 units with dropout (0.5) + L2 regularization
-Output Layer: 1 unit (quality score)
-Total Parameters: 33,953
-```
-
-### **F&B-Specific Optimizations:**
-- **Robust Scaling**: Better outlier handling than MinMaxScaler
-- **Enhanced Regularization**: Prevents overfitting in process data
-- **Data Quality Enhancement**: Removes sensor errors and calibration issues
-- **Industry-Standard Ranges**: SCA-compliant temperature thresholds
-
-## 📈 **Performance Results**
-
-### **Training Performance:**
-- **Loss Reduction**: 84% improvement (1.1752 → 0.1873)
-- **MAE Improvement**: 37% improvement (0.4910 → 0.3117)
-- **No Overfitting**: Stable training and validation curves
-- **Best Epoch**: 29 (optimal generalization)
-
-### **Model Learning Verification:**
-- **Mean Error**: 20.4 points (5.6% error rate)
-- **Trend Correlation**: 0.663 (excellent pattern recognition)
-- **Grade Prediction**: 40% accuracy (misleading due to narrow grade boundaries)
-- **All Predictions**: Within realistic quality range (221-505)
-
-### **Data Quality Improvements:**
-- **Fixed 29,184 humidity readings** > 100% (calibration issues)
-- **Removed 203 negative temperatures** (sensor errors)
-- **Removed 205 extreme temperatures** > 800°C (unrealistic values)
-- **Removed 6,000+ statistical outliers** (IQR method)
-
-## 🚀 **Quick Start**
-
-### **Prerequisites:**
 ```bash
-pip install -r requirements.txt
+# Clone the repository
+git clone <repository-url>
+cd honeywell-fb-dashboard
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-### **Run the Model:**
+Visit `http://localhost:5173` to access the dashboard!
+
+### Build for Production
+
 ```bash
-python3 run_lstm_coffee_model.py
+# Build the application
+npm run build
+
+# Preview the build
+npm run preview
 ```
 
-### **Generate Dashboard:**
-```bash
-python3 fb_dashboard_visualization.py
-```
-
-## 📁 **Repository Structure**
+## 📁 Project Structure
 
 ```
-FandBPredictiveModel/
-├── run_lstm_coffee_model.py          # Main optimized model
-├── fb_dashboard_visualization.py     # Real-time dashboard
-├── Coffee_Roasting_Industry_Research.md  # Industry research
-├── F&B_Domain_Analysis.md            # Domain analysis
-├── PROJECT_SUMMARY.md                # Project summary
-├── requirements.txt                  # Dependencies
-├── .gitignore                       # Git ignore rules
-├── problemstatement.txt             # Original problem statement
-├── data_X.csv                       # Sensor data (large file)
-├── data_Y.csv                       # Quality data
-├── sample_submission.csv            # Submission template
-└── sample_data/                     # Sample datasets
+src/
+├── components/
+│   ├── Header.jsx              # Main header with Honeywell branding
+│   ├── Sidebar.jsx             # Navigation sidebar
+│   ├── Dashboard.jsx           # Main dashboard layout
+│   └── widgets/                # Individual dashboard widgets
+│       ├── KPICards.jsx        # Key performance indicator cards
+│       ├── QualityGauge.jsx    # Circular quality gauge
+│       ├── ModelTraining.jsx   # AI model training visualization
+│       ├── TemperatureChart.jsx # Temperature zone monitoring
+│       ├── QualityTrend.jsx    # Quality trend analysis
+│       ├── SystemHealth.jsx    # System health metrics
+│       ├── ProcessEfficiency.jsx # Process efficiency donut chart
+│       └── AlertsPanel.jsx     # Real-time alerts panel
+├── App.jsx                     # Main application component
+├── main.jsx                    # Application entry point
+└── index.css                   # Global styles and Tailwind imports
 ```
 
-## 🏭 **Industrial Applications**
+## 🎨 Design Features
 
-### **Commercial Coffee Roasters:**
-- **Real-time Quality Monitoring**: Continuous quality prediction
-- **Process Optimization**: Temperature profile adjustments
-- **Anomaly Detection**: Early warning for quality issues
-- **Batch Consistency**: Maintain uniform quality across batches
+### Honeywell Branding
+- **Primary Color**: Honeywell Red (#D32F2F)
+- **Secondary Color**: Blue (#1976D2)
+- **Typography**: Helvetica font family
+- **Professional Layout**: Clean, modern interface
 
-### **Specialty Coffee Producers:**
-- **Premium Quality Assurance**: SCA standards compliance
-- **Flavor Profile Control**: Precise roasting control
-- **Waste Reduction**: Predict and prevent poor quality batches
-- **Market Differentiation**: Consistent premium quality
+### Interactive Widgets
+- **Quality Gauge**: Animated circular progress indicator
+- **Temperature Monitoring**: Real-time zone temperature tracking
+- **System Health**: Live system metrics with status indicators
+- **Alert System**: Severity-based alert management
+- **Process Efficiency**: Donut chart with breakdown metrics
 
-### **Quality Control Systems:**
-- **Automated Monitoring**: 24/7 quality surveillance
-- **Predictive Maintenance**: Equipment health monitoring
-- **Regulatory Compliance**: Industry standards adherence
-- **Data Analytics**: Process optimization insights
+### Real-time Features
+- **Live Updates**: Simulated real-time data updates every 5 seconds
+- **Status Indicators**: Animated status dots and progress bars
+- **Responsive Grid**: Adaptive layout for different screen sizes
 
-## 🔬 **Research & Industry Standards**
+## 🔧 Configuration
 
-### **SCA (Specialty Coffee Association) Standards:**
-- **Temperature Profiles**: Industry-standard roasting curves
-- **Quality Metrics**: Agtron scale and sensory evaluation
-- **Process Parameters**: Optimal ranges for each roasting phase
-- **Equipment Specifications**: Commercial roaster requirements
+### Customizing Colors
+Edit `tailwind.config.js` to modify the Honeywell color palette:
 
-### **Technical Standards:**
-- **ISO 9001**: Quality management systems
-- **HACCP**: Hazard analysis and critical control points
-- **FDA Guidelines**: Food safety regulations
-- **Industry Best Practices**: Commercial roasting protocols
+```javascript
+colors: {
+  honeywell: {
+    primary: '#D32F2F',      // Honeywell Red
+    secondary: '#1976D2',    // Blue
+    accent: '#FFC107',       // Amber
+    success: '#388E3C',      // Green
+    warning: '#F57C00',      // Orange
+    danger: '#D32F2F',       // Red
+    'light-gray': '#F5F5F5', // Light Gray
+    'dark-gray': '#424242'   // Dark Gray
+  }
+}
+```
 
-## 📊 **Visualizations & Monitoring**
+### Adding New Widgets
+1. Create a new component in `src/components/widgets/`
+2. Import and add it to the Dashboard grid in `Dashboard.jsx`
+3. Follow the existing widget patterns for consistency
 
-### **Real-time Dashboard Features:**
-- **Quality Score Trends**: Continuous quality monitoring
-- **Temperature Zone Overview**: Multi-zone temperature tracking
-- **Process Anomaly Detection**: Real-time anomaly alerts
-- **Quality Distribution**: Grade distribution analysis
-- **Sensor Correlation Heatmap**: Inter-sensor relationships
-- **Process Timeline**: Roasting cycle visualization
-- **Energy Consumption**: Efficiency monitoring
-- **Production Rate**: Throughput analysis
+## 📊 Dashboard Components
 
-### **Process Flow Diagram:**
-- **Coffee Bean Roasting Timeline**: Drying → Pre-Roasting → Main Roasting → Post-Roasting → Cooling
-- **Sensor Locations**: Strategic sensor placement
-- **Quality Checkpoints**: Critical quality assessment points
-- **Control Parameters**: Key process control variables
+### KPI Cards
+- Quality Score with real-time updates
+- Process Efficiency percentage
+- System Uptime monitoring
+- Active Alerts count
 
-## 🎯 **Business Impact**
+### Quality Monitoring
+- Circular gauge with percentage display
+- Quality status indicators (Excellent/Good/Acceptable/Poor)
+- Real-time quality trend analysis
 
-### **Economic Benefits:**
-- **10-20% Quality Improvement**: Enhanced product consistency
-- **5-15% Cost Savings**: Reduced waste and rework
-- **Increased Market Share**: Premium quality differentiation
-- **Operational Efficiency**: Optimized process parameters
+### Temperature Zones
+- Individual zone temperature monitoring
+- Target range indicators
+- Average temperature calculation
 
-### **Quality Assurance:**
-- **Real-time Monitoring**: Continuous quality surveillance
-- **Predictive Analytics**: Early quality issue detection
-- **Process Optimization**: Data-driven improvements
-- **Regulatory Compliance**: Industry standards adherence
+### System Health
+- CPU, Memory, Storage, and Network usage
+- Health status indicators
+- Overall system health summary
 
-## 🔧 **Technical Specifications**
+### Process Efficiency
+- Donut chart visualization
+- Quality breakdown (High/Medium/Low)
+- Efficiency status indicators
 
-### **Model Performance:**
-- **Training Time**: ~15 minutes (30 epochs)
-- **Prediction Speed**: Real-time (<1 second per prediction)
-- **Accuracy**: 5.6% mean error rate
-- **Scalability**: Handles 1000+ kg/day production
+### Alert Management
+- Real-time alert monitoring
+- Severity-based alert categorization
+- Recent alert history
 
-### **Data Requirements:**
-- **Sensor Data**: 17 temperature and humidity sensors
-- **Time Resolution**: Minute-level granularity
-- **Data Volume**: 2M+ sensor readings
-- **Quality Labels**: SCA-compliant quality scores
+## 🎯 Key Features
 
-## 📈 **Future Enhancements**
+### Real-time Data Simulation
+The dashboard includes simulated real-time data updates to demonstrate live monitoring capabilities:
 
-### **Advanced Features:**
-- **Multi-bean Variety Support**: Different coffee varieties
-- **Weather Integration**: Environmental factor consideration
-- **Supply Chain Integration**: End-to-end traceability
-- **Mobile App**: Real-time monitoring on mobile devices
+```javascript
+useEffect(() => {
+  const interval = setInterval(() => {
+    setDashboardData(prev => ({
+      ...prev,
+      quality: prev.quality + (Math.random() - 0.5) * 10,
+      // ... other metrics
+    }))
+  }, 5000)
+  return () => clearInterval(interval)
+}, [])
+```
 
-### **AI/ML Improvements:**
-- **Ensemble Models**: Multiple model combination
-- **Transfer Learning**: Cross-facility knowledge transfer
-- **AutoML**: Automated hyperparameter optimization
-- **Edge Computing**: On-device inference capabilities
+### Responsive Design
+- Mobile-first approach
+- Adaptive grid layouts
+- Touch-friendly interface
+- Optimized for all screen sizes
+
+### Professional Styling
+- Consistent Honeywell branding
+- Modern card-based design
+- Smooth animations and transitions
+- Professional color scheme
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+## 👨‍💻 Author
+
+**Adicherikandi Sidharth**
+
+* GitHub: [@aksidharth04](https://github.com/aksidharth04)
+* LinkedIn: [Adicherikandi Sidharth](https://linkedin.com/in/aksidharth)
+* Email: aksidharthm10@gmail.com
+
+## 🆘 Support
+
+* Email: aksidharthm10@gmail.com
+* GitHub Issues: Create an issue for bugs or feature requests
 
 ---
 
-## 🏆 **Project Status: PRODUCTION READY**
+**Made with ❤️ by Adicherikandi Sidharth**
 
-This coffee roasting anomaly prediction system is **production-ready** and demonstrates:
-- ✅ **Industry-standard implementation** (SCA compliant)
-- ✅ **Excellent model performance** (5.6% error rate)
-- ✅ **Robust data handling** (sensor error correction)
-- ✅ **Comprehensive monitoring** (real-time dashboard)
-- ✅ **Commercial scalability** (100-500 kg batch capacity)
-
-**Ready for deployment in commercial coffee roasting facilities worldwide!** ☕✨
+_Honeywell F&B Process Monitoring Dashboard - Professional industrial monitoring solution_ 🚀
