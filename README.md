@@ -1,213 +1,163 @@
-# 🚀 Honeywell F&B Process Monitoring Dashboard
+# Coffee Quality Prediction System
 
-**Professional real-time monitoring dashboard for industrial coffee bean roasting processes**  
-_Built with React, Tailwind CSS, and modern web technologies_
+**Machine learning system for predicting coffee bean quality during industrial roasting processes**
 
-## ✨ Features
+## Overview
 
-* 🎯 **Real-time Monitoring**: Live quality score tracking and process efficiency metrics
-* 📊 **Interactive Dashboards**: Professional widgets with animated charts and gauges
-* 🔔 **Smart Alerts**: Real-time alert system with severity-based notifications
-* 🧠 **AI Integration**: Model training performance visualization
-* 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-* 🎨 **Modern UI**: Clean, professional interface with Honeywell branding
+This system uses deep learning to predict coffee quality scores based on real-time sensor data from industrial roasting equipment. The model analyzes temperature readings from multiple zones and humidity data to forecast final product quality.
 
-## 🛠️ Tech Stack
+## Machine Learning Architecture
 
-**Frontend**: React 18, Vite, Tailwind CSS  
-**Charts**: Custom SVG-based visualizations  
-**Icons**: Lucide React  
-**Styling**: Tailwind CSS with custom Honeywell color palette
+### Model Type
+- **Neural Network**: 5-layer feedforward network with feature engineering
+- **Input**: 546 enhanced features (original + statistical + zone + temporal)
+- **Output**: Single quality score prediction
 
-## 🚀 Quick Start
+### Feature Engineering
+- **Statistical Features**: Mean, std, min, max, range, percentiles for each sensor
+- **Zone Analysis**: Temperature correlations across roasting zones
+- **Temporal Features**: Time position, sequence length, overall statistics
+
+### Network Architecture
+- **Input Layer**: 546 neurons (enhanced features)
+- **Hidden Layer 1**: 273 neurons (feature extraction)
+- **Hidden Layer 2**: 273 neurons (deeper learning)
+- **Hidden Layer 3**: 182 neurons (pattern recognition)
+- **Hidden Layer 4**: 68 neurons (consolidation)
+- **Output Layer**: 1 neuron (quality prediction)
+
+### Training Configuration
+- **Optimizer**: Adam (learning rate: 0.0001, clipnorm: 0.5)
+- **Loss Function**: Mean Squared Error
+- **Regularization**: L2 regularization (0.01) on all layers
+- **Activation**: Leaky ReLU (prevents dying neurons)
+- **Normalization**: Batch normalization on all layers
+- **Dropout**: 25-30% in hidden layers
+
+## Data Processing
+
+### Sensor Data
+- **Temperature Zones**: 5 zones (drying, pre-roasting, main roasting, post-roasting, cooling)
+- **Sensors per Zone**: 3 temperature sensors each
+- **Humidity Sensors**: 2 sensors (relative and absolute humidity)
+- **Total Sensors**: 17 sensors
+
+### Data Cleaning
+- **Outlier Removal**: IQR method for statistical outliers
+- **Calibration Fixes**: Humidity capped at 100%, negative temperatures removed
+- **Missing Values**: Forward fill and backward fill
+- **Data Retention**: Typically 85-95% after cleaning
+
+### Scaling
+- **Method**: RobustScaler (handles outliers better than MinMaxScaler)
+- **Features**: Robust scaling for all sensor data
+- **Target**: Robust scaling for quality scores
+
+## Quality Grading System
+
+Based on Specialty Coffee Association (SCA) standards:
+
+- **A+ (450-505)**: Excellent quality - Premium specialty coffee
+- **A (400-449)**: Good quality - Commercial specialty coffee  
+- **B (350-399)**: Acceptable quality - Standard commercial coffee
+- **C (300-349)**: Below standard - Requires process adjustment
+- **D (221-299)**: Poor quality - Reject batch
+
+## Performance Metrics
+
+### Model Evaluation
+- **Mean Squared Error (MSE)**: Primary loss metric
+- **Mean Absolute Error (MAE)**: Average prediction error
+- **Root Mean Squared Error (RMSE)**: Standard deviation of errors
+- **R² Score**: Coefficient of determination
+
+### Accuracy Benchmarks
+- **Within 1% error**: Target accuracy
+- **Within 5% error**: Acceptable accuracy
+- **Within 10% error**: Minimum accuracy
+- **Grade Prediction**: Accuracy of quality grade classification
+
+## Usage
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
+- Python 3.8+
+- TensorFlow 2.x
+- scikit-learn
+- pandas, numpy, matplotlib
 
 ### Installation
-
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd honeywell-fb-dashboard
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+pip install -r requirements.txt
 ```
 
-Visit `http://localhost:5173` to access the dashboard!
-
-### Build for Production
-
+### Running the Model
 ```bash
-# Build the application
-npm run build
-
-# Preview the build
-npm run preview
+python coffee_quality_model.py
 ```
 
-## 📁 Project Structure
+### Input Data Format
+- **data_X.csv**: Sensor readings with timestamp
+- **data_Y.csv**: Quality scores with timestamp
+- **sample_submission.csv**: Prediction template
 
-```
-src/
-├── components/
-│   ├── Header.jsx              # Main header with Honeywell branding
-│   ├── Sidebar.jsx             # Navigation sidebar
-│   ├── Dashboard.jsx           # Main dashboard layout
-│   └── widgets/                # Individual dashboard widgets
-│       ├── KPICards.jsx        # Key performance indicator cards
-│       ├── QualityGauge.jsx    # Circular quality gauge
-│       ├── ModelTraining.jsx   # AI model training visualization
-│       ├── TemperatureChart.jsx # Temperature zone monitoring
-│       ├── QualityTrend.jsx    # Quality trend analysis
-│       ├── SystemHealth.jsx    # System health metrics
-│       ├── ProcessEfficiency.jsx # Process efficiency donut chart
-│       └── AlertsPanel.jsx     # Real-time alerts panel
-├── App.jsx                     # Main application component
-├── main.jsx                    # Application entry point
-└── index.css                   # Global styles and Tailwind imports
-```
+### Output
+- **coffee_quality_model.h5**: Trained model
+- **best_coffee_quality_model.h5**: Best checkpoint
+- **coffee_quality_training.png**: Training curves
 
-## 🎨 Design Features
+## Process Parameters
 
-### Honeywell Branding
-- **Primary Color**: Honeywell Red (#D32F2F)
-- **Secondary Color**: Blue (#1976D2)
-- **Typography**: Helvetica font family
-- **Professional Layout**: Clean, modern interface
+### Temperature Ranges (SCA Guidelines)
+- **Drying Zone**: 150-220°C
+- **Pre-Roasting**: 220-380°C
+- **Main Roasting**: 380-520°C
+- **Post-Roasting**: 300-450°C
+- **Cooling Zone**: 200-300°C
 
-### Interactive Widgets
-- **Quality Gauge**: Animated circular progress indicator
-- **Temperature Monitoring**: Real-time zone temperature tracking
-- **System Health**: Live system metrics with status indicators
-- **Alert System**: Severity-based alert management
-- **Process Efficiency**: Donut chart with breakdown metrics
+### Humidity Control
+- **Optimal Range**: 40-60%
+- **Maximum**: 100% (sensor calibration limit)
+- **Minimum**: 0%
 
-### Real-time Features
-- **Live Updates**: Simulated real-time data updates every 5 seconds
-- **Status Indicators**: Animated status dots and progress bars
-- **Responsive Grid**: Adaptive layout for different screen sizes
+## Technical Specifications
 
-## 🔧 Configuration
+### Data Quality Thresholds
+- **Max Temperature**: 800°C (realistic limit)
+- **Min Temperature**: 0°C
+- **Outlier Detection**: 3 standard deviations
+- **Sequence Length**: 24 time steps (roasting cycles)
 
-### Customizing Colors
-Edit `tailwind.config.js` to modify the Honeywell color palette:
+### Model Training
+- **Epochs**: 100 maximum
+- **Batch Size**: 128
+- **Validation Split**: 20%
+- **Early Stopping**: Patience of 25 epochs
+- **Learning Rate**: Cosine annealing scheduler
 
-```javascript
-colors: {
-  honeywell: {
-    primary: '#D32F2F',      // Honeywell Red
-    secondary: '#1976D2',    // Blue
-    accent: '#FFC107',       // Amber
-    success: '#388E3C',      // Green
-    warning: '#F57C00',      // Orange
-    danger: '#D32F2F',       // Red
-    'light-gray': '#F5F5F5', // Light Gray
-    'dark-gray': '#424242'   // Dark Gray
-  }
-}
-```
+## Dashboard Interface
 
-### Adding New Widgets
-1. Create a new component in `src/components/widgets/`
-2. Import and add it to the Dashboard grid in `Dashboard.jsx`
-3. Follow the existing widget patterns for consistency
+The system includes a React-based dashboard for real-time monitoring:
 
-## 📊 Dashboard Components
+- **Real-time Quality Tracking**: Live quality score updates
+- **Temperature Monitoring**: Zone-by-zone temperature analysis
+- **Process Efficiency**: Quality breakdown and efficiency metrics
+- **Alert System**: Real-time anomaly detection
+- **Model Performance**: Training metrics and validation curves
 
-### KPI Cards
-- Quality Score with real-time updates
-- Process Efficiency percentage
-- System Uptime monitoring
-- Active Alerts count
+## Files
 
-### Quality Monitoring
-- Circular gauge with percentage display
-- Quality status indicators (Excellent/Good/Acceptable/Poor)
-- Real-time quality trend analysis
+- **coffee_quality_model.py**: Main ML model implementation
+- **honeywell_dashboard.py**: Additional dashboard functionality
+- **src/**: React dashboard components
+- **requirements.txt**: Python dependencies
+- **package.json**: Node.js dependencies
 
-### Temperature Zones
-- Individual zone temperature monitoring
-- Target range indicators
-- Average temperature calculation
-
-### System Health
-- CPU, Memory, Storage, and Network usage
-- Health status indicators
-- Overall system health summary
-
-### Process Efficiency
-- Donut chart visualization
-- Quality breakdown (High/Medium/Low)
-- Efficiency status indicators
-
-### Alert Management
-- Real-time alert monitoring
-- Severity-based alert categorization
-- Recent alert history
-
-## 🎯 Key Features
-
-### Real-time Data Simulation
-The dashboard includes simulated real-time data updates to demonstrate live monitoring capabilities:
-
-```javascript
-useEffect(() => {
-  const interval = setInterval(() => {
-    setDashboardData(prev => ({
-      ...prev,
-      quality: prev.quality + (Math.random() - 0.5) * 10,
-      // ... other metrics
-    }))
-  }, 5000)
-  return () => clearInterval(interval)
-}, [])
-```
-
-### Responsive Design
-- Mobile-first approach
-- Adaptive grid layouts
-- Touch-friendly interface
-- Optimized for all screen sizes
-
-### Professional Styling
-- Consistent Honeywell branding
-- Modern card-based design
-- Smooth animations and transitions
-- Professional color scheme
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
-## 👨‍💻 Author
+## Author
 
 **Adicherikandi Sidharth**
+- GitHub: [@aksidharth04](https://github.com/aksidharth04)
+- Email: aksidharthm10@gmail.com
 
-* GitHub: [@aksidharth04](https://github.com/aksidharth04)
-* LinkedIn: [Adicherikandi Sidharth](https://linkedin.com/in/aksidharth)
-* Email: aksidharthm10@gmail.com
+## License
 
-## 🆘 Support
-
-* Email: aksidharthm10@gmail.com
-* GitHub Issues: Create an issue for bugs or feature requests
-
----
-
-**Made with ❤️ by Adicherikandi Sidharth**
-
-_Honeywell F&B Process Monitoring Dashboard - Professional industrial monitoring solution_ 🚀
+MIT License
