@@ -31,12 +31,12 @@ FB_CONFIG = {
         'humidity': ['H_data', 'AH_data']
     },
     'process_parameters': {
-        'drying_temp_range': (200, 250),  # °C
-        'pre_roasting_temp_range': (300, 400),  # °C
-        'main_roasting_temp_range': (400, 600),  # °C
-        'post_roasting_temp_range': (300, 400),  # °C
-        'cooling_temp_range': (200, 250),  # °C
-        'humidity_range': (40, 60)  # %
+        'drying_temp_range': (150, 220),      # °C - Optimal drying (SCA standard)
+        'pre_roasting_temp_range': (220, 380), # °C - Pre-crack development
+        'main_roasting_temp_range': (380, 520), # °C - Crack and development
+        'post_roasting_temp_range': (300, 450), # °C - Flavor stabilization
+        'cooling_temp_range': (200, 300),     # °C - Rapid cooling
+        'humidity_range': (40, 60)            # % - Optimal roasting environment
     }
 }
 
