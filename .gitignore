@@ -1,7 +1,13 @@
-# Large data files
+# Data files (too large for GitHub)
 data_X.csv
+data_Y.csv
+sample_submission.csv
+
+# Generated outputs
+*.png
 *.h5
-*.hdf5
+*_predictions.csv
+*_submission.csv
 
 # Python
 __pycache__/
@@ -24,11 +30,12 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Environment variables
+# Environment
 .env
 .venv
 env/
@@ -42,7 +49,21 @@ venv.bak/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
